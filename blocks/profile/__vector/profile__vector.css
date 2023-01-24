@@ -1,0 +1,9 @@
+.profile__vector {
+  width: 22px;
+}
+
+@media (max-width: 767px) {
+  .profile__vector {
+    width: 16px;
+  }
+}

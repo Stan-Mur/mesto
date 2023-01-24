@@ -1,0 +1,12 @@
+.profile__edit-img {
+    width: 10px;
+    height: 10px;
+}
+
+@media (max-width: 767px) {
+    .profile__edit-img {
+        width: 7px;
+        height: 7px;
+        margin: 0px 0px 4px -1px;
+    }
+  }
