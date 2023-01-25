@@ -9,8 +9,9 @@
   font-size: 18px;
   outline: none;
   border: none;
-  margin: 25px 0 37px 0;
+  margin: 18px 0 37px 0;
   cursor: pointer;
+  line-height: 22px;
 }
 
 .popup__form-btn:hover {
@@ -21,5 +22,8 @@
   .popup__form-btn {
     width: 100%;
     height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 15px 0 25px 0;
   }
 }

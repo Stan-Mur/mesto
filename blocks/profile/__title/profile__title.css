@@ -2,6 +2,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
+  line-height: 48px;
   color: #ffffff;
   margin: 0;
   max-width: 293px;
@@ -13,9 +14,8 @@
 @media (max-width: 767px) {
   .profile__title {
     max-width: 189px;
-    font-style: normal;
-    font-weight: 500;
     font-size: 27px;
     text-align: center;
+    line-height: 33px;
   }
 }
