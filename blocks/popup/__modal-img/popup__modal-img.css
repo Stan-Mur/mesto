@@ -1,0 +1,17 @@
+.popup__modal-img {
+  max-height: 540px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .popup__modal-img {
+    max-width: 630px;
+  }
+}
+
+@media (max-width: 425px) {
+  .popup__modal-img {
+    max-width: 240px;
+    max-height: 299px;
+  }
+}

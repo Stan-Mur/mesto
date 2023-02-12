@@ -5,19 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/index.css" />
-    <title>Жак-Ив Кусто</title>
+    <title>Сыны Анархии</title>
   </head>
   <body class="body">
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
-        <button class="popup__close-btn" type="reset">
+        <button class="popup__close-btn popup__close-btn_profile" type="button">
           <img
             class="popup__close-icon"
             src="images/Close-Icon.svg"
             alt="Закрыть"
           />
         </button>
-        <form class="popup__form" action="#" name="send-form">
+        <form
+          class="popup__form popup__form_profile_change"
+          action="#"
+          name="send-form"
+        >
           <h2 class="popup__subtitle">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input
@@ -39,6 +43,66 @@
         </form>
       </div>
     </div>
+    <div class="popup popup_type_new-card">
+      <div class="popup__container">
+        <button class="popup__close-btn popup__close-btn_cards" type="button">
+          <img
+            class="popup__close-icon"
+            src="images/Close-Icon.svg"
+            alt="Закрыть"
+          />
+        </button>
+        <form
+          class="popup__form popup__form_profile_cards"
+          action="#"
+          name="send-form"
+        >
+          <h2 class="popup__subtitle">Новое место</h2>
+          <fieldset class="popup__input-container">
+            <input
+              id="titleInput"
+              class="popup__form-name"
+              type="text"
+              name="title"
+              value=""
+              placeholder="Название"
+              required
+            />
+            <input
+              id="imageInput"
+              class="popup__form-name"
+              type="url"
+              name="link"
+              value=""
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <button class="popup__form-btn popup__form-btn-cards" type="submit">
+              Сохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_images">
+      <div class="popup__container popup__container_images_open">
+        <figure class="popup__img-place">
+          <button class="popup__close-btn popup__close-btn_img" type="button">
+            <img
+              class="popup__close-icon"
+              src="images/Close-Icon.svg"
+              alt="Закрыть"
+            />
+          </button>
+          <img
+            class="popup__modal-img"
+            src="https://images.unsplash.com/photo-1532895215727-c006c8fdf560?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
+            alt="Здесь должна быть картинка"
+          />
+          <figcaption class="popup__modal-txt"></figcaption>
+        </figure>
+      </div>
+    </div>
     <header class="header">
       <img class="logo" src="images/logo.svg" alt="Логотип" />
     </header>
@@ -48,7 +112,7 @@
           <img class="profile__avatar" src="images/avatar.jpg" alt="Фото" />
           <div class="profile__info">
             <div class="profile__rectangle">
-              <h1 class="profile__title">Жак-Ив Кусто</h1><!--что-то я не понял что значит добавить тайп="батон", он всем кнопкам добавлены. Только у закрытия изменил на reset-->
+              <h1 class="profile__title">Сыны Анархии</h1>
               <button
                 class="profile__edit-btn"
                 title="Редактировать профиль"
@@ -61,87 +125,36 @@
                 />
               </button>
             </div>
-            <h2 class="profile__subtitle">Исследователь океана</h2>
+            <h2 class="profile__subtitle">Криминальная драмма</h2>
           </div>
         </div>
-        <button class="profile__button" type="button">
+        <button class="profile__open-add-card" type="button">
           <img class="profile__vector" src="images/vector.svg" alt="Открыть" />
         </button>
       </section>
       <section class="elements">
-        <ul class="elements__items">
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/one.jpg"
-              alt="Первая картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Первая</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/two.jpg"
-              alt="Вторая картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Вторая</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/three.jpg"
-              alt="Третья картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Третья</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/four.jpg"
-              alt="Четвертая картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Четвертая</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/five.jpg"
-              alt="Пятая картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Пятая</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-          <li class="elements__item">
-            <img
-              class="elements__items-img"
-              src="images/six.jpg"
-              alt="Шестая картинка"
-            />
-            <div class="elements__block-like">
-              <h2 class="elements__subtitle">Шестая картиночка</h2>
-              <button class="elements__like-btn" type="button"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements__items"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
+    <template class="add-to-card">
+      <li class="elements__item">
+        <button class="elements__items-basket-btn" type="button">
+          <img
+            class="elements__items-basket-img"
+            src="images/basket.svg"
+            alt="Корзина"
+          />
+        </button>
+        <img class="elements__items-img" src="#" alt="#" />
+        <div class="elements__block-like">
+          <h2 class="elements__subtitle">Карачаевск</h2>
+          <button class="elements__like-btn" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="js/index.js"></script>
   </body>
 </html>
