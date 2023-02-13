@@ -101,18 +101,19 @@ function openPopupImages(imageInput, titleImg) {
   openPopup(popupBigImage);
 }
 
-function formEditProfileSubmitHandler(evt) {
+function submitformEditProfileHandle(evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userProfession.textContent = jobInput.value;
   closePopup(popupEditProfile);
 }
 
-function formEditCardsSubmitHandler(evt) {
+function submitformEditCardsHandle(evt) {
   evt.preventDefault();
   const cardInputs = createCard(titleInput.value, imageInput.value);
   addCard(cardInputs);
   closePopup(popupNewCard);
+  evt.target.reset();
 }
 
 openEditProfilePopupBtn.addEventListener("click", () => {
@@ -123,9 +124,9 @@ openEditProfilePopupBtn.addEventListener("click", () => {
 
 openAddCardPopupBtn.addEventListener("click", () => {
   openPopup(popupNewCard);
-  formEditCards.reset();
 });
-closeImagePopupBtn.addEventListener("click", () => {
+//как пустить через цикл 100 модалок понимаю и могу сделать, но не стал ничего менять потому, что вроде как работа с классами будет дальше, ООП, и всё перепишем
+closeImagePopupBtn.addEventListener("click", () => { 
   closePopup(popupBigImage);
 });
 closeAddCardPopupBtn.addEventListener("click", () => {
@@ -135,5 +136,5 @@ closeEditProfilePopupBtn.addEventListener("click", () => {
   closePopup(popupEditProfile);
 });
 
-formEditProfile.addEventListener("submit", formEditProfileSubmitHandler);
-formEditCards.addEventListener("submit", formEditCardsSubmitHandler);
+formEditProfile.addEventListener("submit", submitformEditProfileHandle);
+formEditCards.addEventListener("submit", submitformEditCardsHandle);
