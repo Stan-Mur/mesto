@@ -87,7 +87,7 @@ function addCard(initialCardElement) {
 }
 
 function openPopup(popup) {
-  popup.classList.toggle("popup_change_display");
+  popup.classList.add("popup_change_display");
 }
 
 function closePopup(popup) {
@@ -101,14 +101,14 @@ function openPopupImages(imageInput, titleImg) {
   openPopup(popupBigImage);
 }
 
-function submitformEditProfileHandle(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userProfession.textContent = jobInput.value;
   closePopup(popupEditProfile);
 }
 
-function submitformEditCardsHandle(evt) {
+function handleCardFormSubmit(evt) {
   evt.preventDefault();
   const cardInputs = createCard(titleInput.value, imageInput.value);
   addCard(cardInputs);
@@ -136,5 +136,5 @@ closeEditProfilePopupBtn.addEventListener("click", () => {
   closePopup(popupEditProfile);
 });
 
-formEditProfile.addEventListener("submit", submitformEditProfileHandle);
-formEditCards.addEventListener("submit", submitformEditCardsHandle);
+formEditProfile.addEventListener("submit", handleProfileFormSubmit);
+formEditCards.addEventListener("submit", handleCardFormSubmit);
