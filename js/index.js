@@ -3,23 +3,23 @@ const formEditProfile = document.querySelector(".popup__form_profile_change");
 const nameInput = formEditProfile.elements.name;
 const jobInput = formEditProfile.elements.about;
 const formEditCards = document.querySelector(".popup__form_profile_cards");
-const openAddCardPopupBtn = document.querySelector(".profile__open-add-card");
+const popupOpenAddCardBtn = document.querySelector(".profile__open-add-card");
 const userName = document.querySelector(".profile__title");
 const userProfession = document.querySelector(".profile__subtitle");
 const popupContainer = document.querySelector(".popup__modal-img");
-const openEditProfilePopupBtn = document.querySelector(".profile__edit-btn");
-const closeEditProfilePopupBtn = document.querySelector(
+const popupOpenEditProfileBtn = document.querySelector(".profile__edit-btn");
+const popupCloseEditProfileBtn = document.querySelector(
   ".popup__close-btn_profile"
 );
 const popupImgTxt = document.querySelector(".popup__modal-txt");
 const popupBigImage = document.querySelector(".popup_type_images");
 const popupNewCard = document.querySelector(".popup_type_new-card");
-const closeImagePopupBtn = document.querySelector(".popup__close-btn_img");
-const closeAddCardPopupBtn = document.querySelector(".popup__close-btn_cards");
+const popupCloseImageBtn = document.querySelector(".popup__close-btn_img");
+const popupCloseAddCardBtn = document.querySelector(".popup__close-btn_cards");
 const cardTemplate = document.querySelector(".add-to-card");
 const cardsContainer = document.querySelector(".elements__items");
-const disabledBtn = document.querySelector(".popup__form-btn-cards");
 const popups = document.querySelectorAll(".popup");
+const disabledCardsBtn = document.querySelector(".popup__form-btn-cards");
 
 const config = {
   formSelector: ".popup__form",
@@ -28,33 +28,6 @@ const config = {
   inputErrorClass: "popup__form-name_error",
   errorActiveClass: "popup__form-input-error_active",
 };
-
-const initialCards = [
-  {
-    name: "Рыжий",
-    link: "https://i.pinimg.com/564x/93/7d/2f/937d2fc0bce603a3c38af2b62f67c05c.jpg",
-  },
-  {
-    name: "Пыр",
-    link: "https://i.pinimg.com/564x/46/5a/34/465a34ad6dabd1e70d1088163ebca4f3.jpg",
-  },
-  {
-    name: "Тиг",
-    link: "https://i.pinimg.com/564x/ee/46/f4/ee46f45e43bcca5f924891d0b824be3e.jpg",
-  },
-  {
-    name: "Бобби",
-    link: "https://i.pinimg.com/564x/c8/33/ef/c833ef95cf585d33d39a998ffb1efcce.jpg",
-  },
-  {
-    name: "Клэй",
-    link: "https://i.pinimg.com/564x/cd/fd/25/cdfd252cd53251c2e93e910c091618be.jpg",
-  },
-  {
-    name: "Джекс",
-    link: "https://i.pinimg.com/564x/09/35/68/09356844633eb2a540f014f776047c0b.jpg",
-  },
-];
 
 initialCards.forEach((element) => {
   const initialCardElement = createCard(element.name, element.link);
@@ -142,23 +115,25 @@ function handleCardFormSubmit(evt) {
   evt.target.reset();
 }
 
-openEditProfilePopupBtn.addEventListener("click", () => {
+popupOpenEditProfileBtn.addEventListener("click", () => {
   nameInput.value = userName.textContent;
   jobInput.value = userProfession.textContent;
   openPopup(popupEditProfile);
 });
 
-openAddCardPopupBtn.addEventListener("click", () => {
+popupOpenAddCardBtn.addEventListener("click", () => {
   openPopup(popupNewCard);
+  formEditCards.reset();
+  disabledCardsBtn.disabled = true;
 });
-//как пустить через цикл 100 модалок понимаю и могу сделать, но не стал ничего менять потому, что вроде как работа с классами будет дальше, ООП, и всё перепишем
-closeImagePopupBtn.addEventListener("click", () => {
+
+popupCloseImageBtn.addEventListener("click", () => {
   closePopup(popupBigImage);
 });
-closeAddCardPopupBtn.addEventListener("click", () => {
+popupCloseAddCardBtn.addEventListener("click", () => {
   closePopup(popupNewCard);
 });
-closeEditProfilePopupBtn.addEventListener("click", () => {
+popupCloseEditProfileBtn.addEventListener("click", () => {
   closePopup(popupEditProfile);
 });
 
