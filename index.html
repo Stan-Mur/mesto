@@ -25,19 +25,29 @@
           <h2 class="popup__subtitle">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input
-              class="popup__form-name"
-              type="text"
-              name="name"
-              value="Жак-Ив Кусто"
-              required
+            class="popup__form-name"
+            type="text"
+            name="name"
+            id="username"
+            value="Сыны Анархии"
+            placeholder="Имя"
+            minlength="2"
+            maxlength="40"
+            required
             />
+            <span class="popup__form-input-error" id="username-error"></span>
             <input
-              class="popup__form-name"
-              type="text"
-              name="about"
-              value="Исследователь океана"
-              required
+            class="popup__form-name"
+            type="text"
+            name="about"
+            id="about-input"
+            value="Веб-разработчик"
+            placeholder="Криминальная драма"
+            minlength="2"
+            maxlength="200"
+            required
             />
+            <span class="popup__form-input-error" id="about-input-error"></span>
             <button class="popup__form-btn" type="submit">Сохранить</button>
           </fieldset>
         </form>
@@ -60,23 +70,27 @@
           <h2 class="popup__subtitle">Новое место</h2>
           <fieldset class="popup__input-container">
             <input
-              id="titleInput"
-              class="popup__form-name"
-              type="text"
-              name="title"
-              value=""
-              placeholder="Название"
-              required
+            id="titleInput"
+            class="popup__form-name"
+            type="text"
+            name="title"
+            value=""
+            placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            required
             />
+            <span class="popup__form-input-error" id="titleInput-error"></span>
             <input
-              id="imageInput"
-              class="popup__form-name"
-              type="url"
-              name="link"
-              value=""
-              placeholder="Ссылка на картинку"
-              required
+            id="imageInput"
+            class="popup__form-name"
+            type="url"
+            name="link"
+            value=""
+            placeholder="Ссылка на картинку"
+            required
             />
+            <span class="popup__form-input-error" id="imageInput-error"></span>
             <button class="popup__form-btn popup__form-btn-cards" type="submit">
               Сохранить
             </button>
@@ -125,7 +139,7 @@
                 />
               </button>
             </div>
-            <h2 class="profile__subtitle">Криминальная драмма</h2>
+            <h2 class="profile__subtitle">Криминальная драма</h2>
           </div>
         </div>
         <button class="profile__open-add-card" type="button">
@@ -155,6 +169,7 @@
         </div>
       </li>
     </template>
+    <script src="js/validate.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>

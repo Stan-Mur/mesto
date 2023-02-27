@@ -18,6 +18,16 @@
   opacity: 0.8;
 }
 
+.popup__form-btn:disabled {
+  background: #ffffff;
+  opacity: 0.2;
+  color: #000000;
+  cursor: none;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
 @media (max-width: 767px) {
   .popup__form-btn {
     width: 100%;

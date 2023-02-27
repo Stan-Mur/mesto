@@ -18,6 +18,16 @@ const closeImagePopupBtn = document.querySelector(".popup__close-btn_img");
 const closeAddCardPopupBtn = document.querySelector(".popup__close-btn_cards");
 const cardTemplate = document.querySelector(".add-to-card");
 const cardsContainer = document.querySelector(".elements__items");
+const disabledBtn = document.querySelector(".popup__form-btn-cards");
+const popups = document.querySelectorAll(".popup");
+
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-name",
+  submitButtonSelector: ".popup__form-btn",
+  inputErrorClass: "popup__form-name_error",
+  errorActiveClass: "popup__form-input-error_active",
+};
 
 const initialCards = [
   {
@@ -87,12 +97,28 @@ function addCard(initialCardElement) {
 }
 
 function openPopup(popup) {
-  popup.classList.add("popup_change_display");
-}
+  popup.classList.add('popup_change_display');
+  document.addEventListener('keydown', closePopupEscape);
+};
 
 function closePopup(popup) {
-  popup.classList.remove("popup_change_display");
+  popup.classList.remove('popup_change_display');
+  document.removeEventListener('keydown', closePopupEscape);
+};
+
+function closePopupEscape(event) {
+  if (event.key === 'Escape') {
+    closePopup(document.querySelector('.popup_change_display'));
+  }
 }
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      closePopup(popup);
+    }
+  });
+});
 
 function openPopupImages(imageInput, titleImg) {
   popupContainer.src = imageInput;
@@ -126,7 +152,7 @@ openAddCardPopupBtn.addEventListener("click", () => {
   openPopup(popupNewCard);
 });
 //как пустить через цикл 100 модалок понимаю и могу сделать, но не стал ничего менять потому, что вроде как работа с классами будет дальше, ООП, и всё перепишем
-closeImagePopupBtn.addEventListener("click", () => { 
+closeImagePopupBtn.addEventListener("click", () => {
   closePopup(popupBigImage);
 });
 closeAddCardPopupBtn.addEventListener("click", () => {
@@ -138,3 +164,5 @@ closeEditProfilePopupBtn.addEventListener("click", () => {
 
 formEditProfile.addEventListener("submit", handleProfileFormSubmit);
 formEditCards.addEventListener("submit", handleCardFormSubmit);
+
+enableValidation(config);
