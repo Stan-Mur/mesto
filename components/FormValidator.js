@@ -1,14 +1,14 @@
 export class FormValidator {
-  constructor(cell, element) {
-    this._cell = cell;
+  constructor(validationConfig, element) {
+    this._validationConfig = validationConfig;
     this._element = element;
   }
   _showInputError = (inputElement, mistake) => {
     const errorElement = this._element.querySelector(
       `#${inputElement.id}-error`
     );
-    inputElement.classList.add(this._cell.inputError);
-    errorElement.classList.add(this._cell.errorClass);
+    inputElement.classList.add(this._validationConfig.inputError);
+    errorElement.classList.add(this._validationConfig.errorClass);
     errorElement.textContent = mistake;
   };
 
@@ -16,8 +16,8 @@ export class FormValidator {
     const errorElement = this._element.querySelector(
       `#${inputElement.id}-error`
     );
-    inputElement.classList.remove(this._cell.inputError);
-    errorElement.classList.remove(this._cell.errorClass);
+    inputElement.classList.remove(this._validationConfig.inputError);
+    errorElement.classList.remove(this._validationConfig.errorClass);
     errorElement.textContent = "";
   };
 
@@ -31,10 +31,10 @@ export class FormValidator {
 
   _setEventListeners() {
     this._inputList = Array.from(
-      this._element.querySelectorAll(this._cell.inputSelector)
+      this._element.querySelectorAll(this._validationConfig.inputSelector)
     );
     this._buttonElement = this._element.querySelector(
-      this._cell.submitButtonSelector
+      this._validationConfig.submitButtonSelector
     );
 
     this.toggleButtonState();
@@ -56,10 +56,10 @@ export class FormValidator {
 
   toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._cell.activeButton);
+      this._buttonElement.classList.add(this._validationConfig.activeButton);
       this._buttonElement.disabled = true;
     } else {
-      this._buttonElement.classList.remove(this._cell.activeButton);
+      this._buttonElement.classList.remove(this._validationConfig.activeButton);
       this._buttonElement.disabled = false;
     }
   }

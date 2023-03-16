@@ -1,13 +1,14 @@
 export class Card {
-    constructor({name, link}, handleCardClick) {
-        this._name = name;
-        this._link = link;
+    constructor(data, cardSelector, handleCardClick) {
+        this._name = data.name;
+        this._link = data.link;
+        this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
         const cardElement = document
-            .querySelector('.add-to-card')
+            .querySelector(this._cardSelector)
             .content
             .querySelector('.elements__item')
             .cloneNode(true);
@@ -34,7 +35,7 @@ export class Card {
 
     _setEventListeners() {
        this._element.querySelector('.elements__items-img').addEventListener('click', () => {
-            this._handleCardClick(this._name, this._link);
+            this._handleCardClick();
         });
 
         this._element.querySelector('.elements__like-btn').addEventListener('click', (evt) => {
