@@ -62,7 +62,7 @@ function openCardPopup(name, link) {
 }
 
 initialCards.forEach((initialCards) => {
-  const card = new Card(initialCards, '.add-to-card');
+  const card = new Card(initialCards, '.add-to-card', openCardPopup);
   const cardElement = card.generateCard();
   cardsContainer.append(cardElement);
 });
@@ -95,7 +95,7 @@ function createCard() {
     name: inputName.value,
     link: inputLink.value,
   };
-  const newCard = new Card(data, openCardPopup, handleCardClick);
+  const newCard = new Card(data, handleCardClick);
   const cardInputs = newCard.generateCard();
   addCard(cardInputs);
 }
