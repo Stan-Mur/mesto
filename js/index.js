@@ -95,7 +95,7 @@ function createCard() {
     name: inputName.value,
     link: inputLink.value,
   };
-  const newCard = new Card(data, openCardPopup);
+  const newCard = new Card(data, openCardPopup, handleCardClick);
   const cardInputs = newCard.generateCard();
   addCard(cardInputs);
 }
