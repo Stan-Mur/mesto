@@ -61,11 +61,15 @@ function openCardPopup(name, link) {
   openPopup(popupBigImage); 
 }
 
+function createCard(name, link) {
+  const cardNew = new Card(name, link, '.add-to-card', openCardPopup);  
+  const cardElement = cardNew.generateCard();
+    return cardElement;
+  }
 
-initialCards.forEach((initialCards) => {
-  const card = new Card(initialCards.name, initialCards.link, '.add-to-card', openCardPopup);
-  const cardElement = card.generateCard();
-  cardsContainer.append(cardElement);
+initialCards.forEach((item) => {
+  const card = createCard(item.name, item.link);
+  cardsContainer.append(card);
 });
 
 function formEditProfileSubmitHandler(evt) {
@@ -75,15 +79,9 @@ function formEditProfileSubmitHandler(evt) {
   closePopup(popupEditProfile);
 }
 
-function createCard() {
-  const cardNew = new Card(inputName.value, inputLink.value, '.add-to-card', openCardPopup);
-  const cardElement = cardNew.generateCard();
-  return cardElement;
-}
-
 function formEditCardsSubmitHandler(evt) {
   evt.preventDefault();
-  addCard(createCard());
+  addCard(createCard(inputName.value, inputLink.value));
   closePopup(popupNewCard);
   addCards.toggleButtonState();
 };
