@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
     <title>Сыны Анархии</title>
   </head>
   <body class="body">
@@ -13,7 +12,7 @@
         <button class="popup__close-btn popup__close-btn_profile" type="button">
           <img
             class="popup__close-icon"
-            src="images/Close-Icon.svg"
+            src="<%=require('./images/Close-Icon.svg')%>"
             alt="Закрыть"
           />
         </button>
@@ -26,27 +25,27 @@
           <h2 class="popup__subtitle">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input
-            class="popup__form-name"
-            type="text"
-            name="name"
-            id="username"
-            value="Сыны Анархии"
-            placeholder="Имя"
-            minlength="2"
-            maxlength="40"
-            required
+              class="popup__form-name"
+              type="text"
+              name="name"
+              id="username"
+              value="Сыны Анархии"
+              placeholder="Имя"
+              minlength="2"
+              maxlength="40"
+              required
             />
             <span class="popup__form-input-error" id="username-error"></span>
             <input
-            class="popup__form-name"
-            type="text"
-            name="about"
-            id="about-input"
-            value="Веб-разработчик"
-            placeholder="Криминальная драма"
-            minlength="2"
-            maxlength="200"
-            required
+              class="popup__form-name"
+              type="text"
+              name="job"
+              id="about-input"
+              value="Сыны Анархии"
+              placeholder="Криминальная драма"
+              minlength="2"
+              maxlength="200"
+              required
             />
             <span class="popup__form-input-error" id="about-input-error"></span>
             <button class="popup__form-btn" type="submit">Сохранить</button>
@@ -59,7 +58,7 @@
         <button class="popup__close-btn popup__close-btn_cards" type="button">
           <img
             class="popup__close-icon"
-            src="images/Close-Icon.svg"
+            src="<%=require('./images/Close-Icon.svg')%>"
             alt="Закрыть"
           />
         </button>
@@ -72,25 +71,25 @@
           <h2 class="popup__subtitle">Новое место</h2>
           <fieldset class="popup__input-container">
             <input
-            id="titleInput"
-            class="popup__form-name"
-            type="text"
-            name="title"
-            value=""
-            placeholder="Название"
-            minlength="2"
-            maxlength="30"
-            required
+              id="titleInput"
+              class="popup__form-name"
+              type="text"
+              name="name"
+              value=""
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
             />
             <span class="popup__form-input-error" id="titleInput-error"></span>
             <input
-            id="imageInput"
-            class="popup__form-name"
-            type="url"
-            name="link"
-            value=""
-            placeholder="Ссылка на картинку"
-            required
+              id="imageInput"
+              class="popup__form-name"
+              type="url"
+              name="link"
+              value=""
+              placeholder="Ссылка на картинку"
+              required
             />
             <span class="popup__form-input-error" id="imageInput-error"></span>
             <button class="popup__form-btn popup__form-btn-cards" type="submit">
@@ -106,7 +105,7 @@
           <button class="popup__close-btn popup__close-btn_img" type="button">
             <img
               class="popup__close-icon"
-              src="images/Close-Icon.svg"
+              src="<%=require('./images/Close-Icon.svg')%>"
               alt="Закрыть"
             />
           </button>
@@ -120,13 +119,17 @@
       </div>
     </div>
     <header class="header">
-      <img class="logo" src="images/logo.svg" alt="Логотип" />
+      <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип" />
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__author">
-          <img class="profile__avatar" src="images/avatar.jpg" alt="Фото" />
-          <div class="profile__info">
+          <img
+            class="profile__avatar"
+            src="<%=require('./images/me.jpg')%>"
+            alt="Фото"
+          />
+          <div class="profile__name">
             <div class="profile__rectangle">
               <h1 class="profile__title">Сыны Анархии</h1>
               <button
@@ -136,7 +139,7 @@
               >
                 <img
                   class="profile__edit-img"
-                  src="images/rectangle.svg"
+                  src="<%=require('./images/rectangle.svg')%>"
                   alt="Редактировать профиль"
                 />
               </button>
@@ -145,7 +148,11 @@
           </div>
         </div>
         <button class="profile__open-add-card" type="button">
-          <img class="profile__vector" src="images/vector.svg" alt="Открыть" />
+          <img
+            class="profile__vector"
+            src="<%=require('./images/vector.svg')%>"
+            alt="Открыть"
+          />
         </button>
       </section>
       <section class="elements">
@@ -153,25 +160,29 @@
       </section>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+      <span class="footer__copyright">&copy; 2023 Mesto Russia</span>
     </footer>
     <template class="add-to-card">
       <li class="elements__item">
         <button class="elements__items-basket-btn" type="button">
           <img
             class="elements__items-basket-img"
-            src="images/basket.svg"
+            src="<%=require('./images/basket.svg')%>"
             alt="Корзина"
           />
         </button>
-        <img class="elements__items-img" src="#" alt="#" />
+        <img
+          class="elements__items-img elements__items-img_template"
+          src="#"
+          alt="#"
+        />
         <div class="elements__block-like">
-          <h2 class="elements__subtitle">Карачаевск</h2>
+          <h2 class="elements__subtitle elements__subtitle_template">
+            Карачаевск
+          </h2>
           <button class="elements__like-btn" type="button"></button>
         </div>
       </li>
     </template>
-
-    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
