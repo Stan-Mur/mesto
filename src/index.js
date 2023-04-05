@@ -6,19 +6,13 @@ import { PopupWithImage } from "./components/PopupWithImage.js";
 import { PopupWithForm } from "./components/PopupWithForm.js";
 import { Section } from "./components/Section.js";
 import { UserInfo } from "./components/UserInfo.js";
-
-export const ESCAPE_BUTTON = "Escape";
-
-const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__form-name",
-  submitButtonSelector: ".popup__form-btn",
-  inputErrorClass: "popup__form-name_error",
-  errorActiveClass: "popup__form-input-error_active",
-  infoName: ".profile__title",
-  infoJob: ".profile__subtitle",
-  elements: ".elements__items",
-};
+import {
+  formEditProfileValidator,
+  config,
+  formEditProfile,
+  formAddCardValidator,
+  formEditCards
+} from "./utils/constants.js";
 
 const addSection = new Section(
   {
@@ -30,19 +24,16 @@ const addSection = new Section(
   config.elements
 );
 
-const formEditProfileValidator = document.querySelector(".profile__edit-btn");
-const formEditProfile = document.querySelector(".popup__form_profile_change");
-const formAddCardValidator = document.querySelector(".profile__open-add-card");
-const formEditCards = document.querySelector(".popup__form_profile_cards");
+
 const editProfile = new FormValidator(config, formEditProfile);
 const addCards = new FormValidator(config, formEditCards);
 const popupEditProfile = new PopupWithForm(
   ".popup_type_edit",
-  formEditProfileSubmitHandler
+  handleProfileFormSubmit
 );
 const popupAddCard = new PopupWithForm(
   ".popup_type_new-card",
-  formEditCardsSubmitHandler
+  handleEditCardsSubmit
 );
 const popupImage = new PopupWithImage(".popup_type_images");
 const userInfo = new UserInfo(config);
@@ -59,13 +50,13 @@ function handleCardClick(elementImage) {
   popupImage.openPopup(elementImage);
 }
 
-function formEditProfileSubmitHandler(evt, data) {
+function handleProfileFormSubmit(evt, data) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   userInfo.setUserInfo(data);
   popupEditProfile.closePopup();
 }
 
-function formEditCardsSubmitHandler(evt, data) {
+function handleEditCardsSubmit(evt, data) {
   evt.preventDefault();
   addSection.addItem(renderCard(data));
   popupAddCard.closePopup();

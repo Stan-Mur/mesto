@@ -25,3 +25,4 @@ export const initialCards = [
     link: "https://i.pinimg.com/564x/09/35/68/09356844633eb2a540f014f776047c0b.jpg",
   },
 ];
+
