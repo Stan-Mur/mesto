@@ -1,22 +1,20 @@
 export class FormValidator {
-    constructor(cell, element) {
-        this._cell = cell;
+    constructor(selectors, element) {
+        this._selectors = selectors;
         this._element = element;
     }
-    _showInputError = (inputElement, mistake) => {
-        const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
-        inputElement.classList.add(this._cell.inputError);
-        errorElement.classList.add(this._cell.errorClass);
-        errorElement.textContent = mistake;
+    _showInputError = (inputElement, errorMessage) => {
+        const errorElement = this._element.querySelector(`.${inputElement.id}-error`);
+        inputElement.classList.add(this._selectors.inputErrorClass);
+        errorElement.textContent = errorMessage;
+        errorElement.classList.add(this._selectors.errorClass);
     };
-
     _hideInputError = (inputElement) => {
-        const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
-        inputElement.classList.remove(this._cell.inputError);
-        errorElement.classList.remove(this._cell.errorClass);
+        const errorElement = this._element.querySelector(`.${inputElement.id}-error`);
+        inputElement.classList.remove(this._selectors.inputErrorClass);
+        errorElement.classList.remove(this._selectors.errorClass);
         errorElement.textContent = '';
     };
-
     _checkInputValidity = (inputElement) => {
         if (!inputElement.validity.valid) {
             this._showInputError(inputElement, inputElement.validationMessage);
@@ -24,10 +22,9 @@ export class FormValidator {
             this._hideInputError(inputElement);
         }
     };
-
     _setEventListeners() {
-        this._inputList = Array.from(this._element.querySelectorAll(this._cell.inputSelector));
-        this._buttonElement = this._element.querySelector(this._cell.submitButtonSelector);
+        this._inputList = Array.from(this._element.querySelectorAll(this._selectors.inputSelector));
+        this._buttonElement = this._element.querySelector(this._selectors.submitButtonSelector);
 
         this.toggleButtonState();
 
@@ -41,27 +38,27 @@ export class FormValidator {
             });
         });
     };
-
     _hasInvalidInput() {
 
-        return this._inputList.some(function (inputElement) {
+        return this._inputList.some(function(inputElement) {
             return !inputElement.validity.valid;
         });
     }
-
     toggleButtonState() {
 
         if (this._hasInvalidInput()) {
-            this._buttonElement.classList.add(this._cell.activeButton);
+            this._buttonElement.classList.add(this._selectors.inactiveButtonClass);
             this._buttonElement.disabled = true;
         } else {
-            this._buttonElement.classList.remove(this._cell.activeButton);
+            this._buttonElement.classList.remove(this._selectors.inactiveButtonClass);
             this._buttonElement.disabled = false;
         }
     };
-
     enableValidation() {
-        this._element.addEventListener('submit', function (evt) {
+        const classesList = this._selectors;
+        const formElement = this._element;
+
+        this._element.addEventListener('submit', function(evt) {
             evt.preventDefault();
         });
         this._setEventListeners();

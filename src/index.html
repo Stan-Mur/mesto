@@ -2,187 +2,169 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Сыны Анархии</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Mesto</title>
   </head>
-  <body class="body">
-    <div class="popup popup_type_edit">
-      <div class="popup__container">
-        <button class="popup__close-btn popup__close-btn_profile" type="button">
-          <img
-            class="popup__close-icon"
-            src="<%=require('./images/Close-Icon.svg')%>"
-            alt="Закрыть"
-          />
-        </button>
-        <form
-          class="popup__form popup__form_profile_change"
-          action="#"
-          name="send-form"
-          novalidate
-        >
-          <h2 class="popup__subtitle">Редактировать профиль</h2>
-          <fieldset class="popup__input-container">
+
+  <body>
+    <div class="page">
+      <div class="popup popup_type_redact">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <form id="profile" name="profile" class="form" novalidate>
+            <h2 class="form__title">Редактировать профиль</h2>
             <input
-              class="popup__form-name"
-              type="text"
+              id="name-input"
               name="name"
-              id="username"
-              value="Сыны Анархии"
+              type="text"
+              class="form__input form__input_type_name"
               placeholder="Имя"
+              value="Имя"
+              required
               minlength="2"
               maxlength="40"
-              required
             />
-            <span class="popup__form-input-error" id="username-error"></span>
+            <span class="form__input-error name-input-error"></span>
             <input
-              class="popup__form-name"
+              id="job-input"
+              name="about"
               type="text"
-              name="job"
-              id="about-input"
-              value="Сыны Анархии"
-              placeholder="Криминальная драма"
+              class="form__input form__input_type_job"
+              placeholder="Род деятельности"
+              value="Род деятельности"
+              required
               minlength="2"
               maxlength="200"
-              required
             />
-            <span class="popup__form-input-error" id="about-input-error"></span>
-            <button class="popup__form-btn" type="submit">Сохранить</button>
-          </fieldset>
-        </form>
+            <span class="form__input-error job-input-error"></span>
+            <button type="submit" class="form__save-button">Сохранить</button>
+            <div class="form__loading">Загрузка...</div>
+          </form>
+          e
+        </div>
       </div>
-    </div>
-    <div class="popup popup_type_new-card">
-      <div class="popup__container">
-        <button class="popup__close-btn popup__close-btn_cards" type="button">
-          <img
-            class="popup__close-icon"
-            src="<%=require('./images/Close-Icon.svg')%>"
-            alt="Закрыть"
-          />
-        </button>
-        <form
-          class="popup__form popup__form_profile_cards"
-          action="#"
-          name="send-form"
-          novalidate
-        >
-          <h2 class="popup__subtitle">Новое место</h2>
-          <fieldset class="popup__input-container">
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <form id="addCard" name="addCard" class="form" novalidate>
+            <h2 class="form__title">Новое место</h2>
             <input
-              id="titleInput"
-              class="popup__form-name"
+              id="title-input"
+              name="title"
               type="text"
-              name="name"
-              value=""
+              class="form__input form__input_type_title"
               placeholder="Название"
+              required
               minlength="2"
               maxlength="30"
-              required
             />
-            <span class="popup__form-input-error" id="titleInput-error"></span>
+            <span class="form__input-error title-input-error"></span>
             <input
-              id="imageInput"
-              class="popup__form-name"
-              type="url"
+              id="url-input"
               name="link"
-              value=""
+              type="url"
+              class="form__input form__input_type_link"
               placeholder="Ссылка на картинку"
               required
             />
-            <span class="popup__form-input-error" id="imageInput-error"></span>
-            <button class="popup__form-btn popup__form-btn-cards" type="submit">
-              Сохранить
-            </button>
-          </fieldset>
-        </form>
+            <span class="form__input-error url-input-error"></span>
+            <button type="submit" class="form__save-button">Создать</button>
+            <div class="form__loading">Загрузка...</div>
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="popup popup_type_images">
-      <div class="popup__container popup__container_images_open">
-        <figure class="popup__img-place">
-          <button class="popup__close-btn popup__close-btn_img" type="button">
+      <div class="popup popup_type_image">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <div class="form-image">
             <img
-              class="popup__close-icon"
-              src="<%=require('./images/Close-Icon.svg')%>"
-              alt="Закрыть"
+              class="form-image__image"
+              src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+              alt="Изображение"
             />
-          </button>
-          <img
-            class="popup__modal-img"
-            src="https://images.unsplash.com/photo-1532895215727-c006c8fdf560?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-            alt="Здесь должна быть картинка"
-          />
-          <figcaption class="popup__modal-txt"></figcaption>
-        </figure>
-      </div>
-    </div>
-    <header class="header">
-      <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип" />
-    </header>
-    <main class="content">
-      <section class="profile">
-        <div class="profile__author">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Фото"
-          />
-          <div class="profile__name">
-            <div class="profile__rectangle">
-              <h1 class="profile__title">Сыны Анархии</h1>
-              <button
-                class="profile__edit-btn"
-                title="Редактировать профиль"
-                type="button"
-              >
-                <img
-                  class="profile__edit-img"
-                  src="<%=require('./images/rectangle.svg')%>"
-                  alt="Редактировать профиль"
-                />
-              </button>
-            </div>
-            <h2 class="profile__subtitle">Криминальная драма</h2>
+            <p class="form-image__text">Картинка</p>
           </div>
         </div>
-        <button class="profile__open-add-card" type="button">
-          <img
-            class="profile__vector"
-            src="<%=require('./images/vector.svg')%>"
-            alt="Открыть"
-          />
-        </button>
-      </section>
-      <section class="elements">
-        <ul class="elements__items"></ul>
-      </section>
-    </main>
-    <footer class="footer">
-      <span class="footer__copyright">&copy; 2023 Mesto Russia</span>
-    </footer>
-    <template class="add-to-card">
-      <li class="elements__item">
-        <button class="elements__items-basket-btn" type="button">
-          <img
-            class="elements__items-basket-img"
-            src="<%=require('./images/basket.svg')%>"
-            alt="Корзина"
-          />
-        </button>
-        <img
-          class="elements__items-img elements__items-img_template"
-          src="#"
-          alt="#"
-        />
-        <div class="elements__block-like">
-          <h2 class="elements__subtitle elements__subtitle_template">
-            Карачаевск
-          </h2>
-          <button class="elements__like-btn" type="button"></button>
+      </div>
+      <div class="popup popup_type_deletion">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <form class="form" name="formAgree" novalidate>
+            <h2 class="form__title">Вы уверены?</h2>
+            <button type="submit" class="form__save-button">Да</button>
+          </form>
         </div>
-      </li>
+      </div>
+      <div class="popup popup_type_redact-avatar">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <form id="redactAvatar" name="redactAvatar" class="form" novalidate>
+            <h2 class="form__title">Обновить аватар</h2>
+            <input
+              id="link-input"
+              name="avatar"
+              type="url"
+              class="form__input form__input_type_avatar"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="form__input-error link-input-error"></span>
+            <button type="submit" class="form__save-button">Сохранить</button>
+            <div class="form__loading">Загрузка...</div>
+          </form>
+        </div>
+      </div>
+      <header class="header">
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="Карачаевск"
+          class="header__logo"
+        />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <div class="profile-avatar">
+            <img
+              id="avatar"
+              class="profile-avatar__image"
+              src="<%=require('./images/avatar.png')%>"
+              alt="Аватарка"
+            />
+            <button
+              type="button"
+              class="profile-avatar__redact-button"
+            ></button>
+          </div>
+          <div class="profile-info">
+            <h1 id="name" class="profile-info__name">Жак-Ив Кусто</h1>
+            <p id="about" class="profile-info__job">Исследователь океана</p>
+            <button type="button" class="profile-info__edit-button"></button>
+          </div>
+          <button type="button" class="profile__add-button"></button>
+        </section>
+        <section class="elements"></section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+      </footer>
+    </div>
+    <template id="card-template">
+      <div class="element">
+        <button type="button" class="element__button-trash"></button>
+        <img
+          src="<%=require('./images/1088404-unsplash.jpg')%>"
+          alt="Описание изображения"
+          class="element__image"
+        />
+        <p class="element__text">Описание изображения</p>
+        <div class="element-like">
+          <button type="button" class="element-like__like"></button>
+          <p id="number" class="element-like__number">0</p>
+        </div>
+      </div>
     </template>
   </body>
 </html>

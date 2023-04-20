@@ -1,9 +1,0 @@
-.profile__rectangle {
-  display: flex;
-}
-
-@media (max-width: 767px) {
-  .profile__rectangle {
-    position: relative;
-  }
-}

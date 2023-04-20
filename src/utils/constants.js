@@ -1,14 +1,31 @@
-export const formEditProfileValidator = document.querySelector(".profile__edit-btn");
-export const config = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__form-name",
-    submitButtonSelector: ".popup__form-btn",
-    inputErrorClass: "popup__form-name_error",
-    errorActiveClass: "popup__form-input-error_active",
-    infoName: ".profile__title",
-    infoJob: ".profile__subtitle",
-    elements: ".elements__items",
-  };
-export const formEditProfile = document.querySelector(".popup__form_profile_change");
-export const formAddCardValidator = document.querySelector(".profile__open-add-card");
-export const formEditCards = document.querySelector(".popup__form_profile_cards");
+export const formEditProfile = document.querySelector('#profile');
+export const formAddCard = document.querySelector('#addCard');
+export const formRedactAvatar = document.querySelector('#redactAvatar');
+export const openEditProfilePopupBtn = document.querySelector('.profile-info__edit-button');
+export const openAddCardPopupBtn = document.querySelector('.profile__add-button');
+export const openRedactAvatarPopupBtn = document.querySelector('.profile-avatar__redact-button');
+export const popupProfileRedact = document.querySelector('.popup_type_redact');
+export const popupAvatarRedact = document.querySelector('.popup_type_redact-avatar');
+export const popupAddNewCard = document.querySelector('.popup_type_add-card');
+export const nameInput = document.querySelector('.form__input_type_name');
+export const jobInput = document.querySelector('.form__input_type_job');
+
+export const selectorsAll = {
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__save-button',
+    inactiveButtonClass: 'form__save-button_inactive',
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__input-error_type_active',
+    infoRedactName: '.form__input_type_name',
+    infoName: '.profile-info__name',
+    infoRedactJob: '.form__input_type_job',
+    infoJob: '.profile-info__job',
+    infoAvatar: '.profile-avatar__image',
+    infoNewAvatar: '.form__input_type_avatar',
+    elements: '.elements',
+    infoTitle: '.form__input_type_title',
+    infoLink: '.form__input_type_link',
+    formloading: '.form__loading'
+};
+
