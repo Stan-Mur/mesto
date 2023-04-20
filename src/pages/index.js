@@ -4,7 +4,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
-import { PopupWithDeletionButton } from '../components/PopupWithDeletionButton.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 import {
@@ -22,7 +22,7 @@ import {
     selectorsAll
 } from '../utils/constants.js';
 
-//validations
+
 const cardEditProfile = new FormValidator(selectorsAll, formEditProfile);
 const cardAdd = new FormValidator(selectorsAll, formAddCard);
 const cardRedactAvatar = new FormValidator(selectorsAll, formRedactAvatar);
@@ -34,7 +34,7 @@ cardAdd.toggleButtonState();
 const popupEditProfile = new PopupWithForm('.popup_type_redact', formEditProfileSubmitHandler);
 const popupAddCard = new PopupWithForm('.popup_type_add-card', submitAddCardForm);
 const popupRedactAvatar = new PopupWithForm('.popup_type_redact-avatar', submitRedactAvatarForm);
-const popupDeletion = new PopupWithDeletionButton('.popup_type_deletion', submitDeleteCard);
+const popupDeletion = new PopupWithConfirmation('.popup_type_deletion', submitDeleteCard);
 const popupImage = new PopupWithImage('.popup_type_image');
 
 const userInfo = new UserInfo(selectorsAll);
@@ -71,19 +71,19 @@ function renderCard(item, myId) {
     return cardElement;
 }
 
-//initial delele card
+
 function submitDeleteCard(evt, card, cardId) {
     evt.preventDefault();
     deleteServerCard(card, cardId);
 }
-//redact avatar
+
 function submitRedactAvatarForm(evt, data) {
     evt.preventDefault();
     renderLoading(true, popupAvatarRedact);
     loadingAvatar(data);
     cardRedactAvatar.toggleButtonState();
 }
-//initial new card
+
 function submitAddCardForm(evt, data) {
     evt.preventDefault();
     renderLoading(true, popupAddNewCard);
@@ -117,12 +117,12 @@ popupDeletion.setEventListeners();
 popupAddCard.setEventListeners();
 popupImage.setEventListeners();
 
-//open image
+
 function handleCardClick(elementImage) {
     popupImage.openPopup(elementImage);
 }
 
-//API
+
 function renderError(err) {
     result.textContent = '';
     error.textContent = err;
@@ -139,7 +139,7 @@ const api = new Api({
 initialAll();
 
 
-//initial users and initial card from server 
+ 
 function initialAll() {
     Promise.all([api.initialUsers(), api.initCardsFromServer()])
         .then((result) => {
@@ -151,7 +151,7 @@ function initialAll() {
             renderError(`Ошибка: ${err}`);
         })
 }
-//delete cards from server
+
 function deleteServerCard(card, cardId) {
     api.deleteCardFromServer(cardId)
         .then(() => {
@@ -162,7 +162,7 @@ function deleteServerCard(card, cardId) {
             renderError(`Ошибка: ${err}`);
         });
 }
-//like cards
+
 function likeCard(card, likeId) {
     api.likeCards(likeId)
         .then((result) => {
@@ -172,7 +172,7 @@ function likeCard(card, likeId) {
             renderError(`Ошибка: ${err}`);
         })
 }
-//dislike cards
+
 function dislikeCard(card, likeId) {
     api.dislikeCards(likeId)
         .then((result) => {
@@ -182,7 +182,7 @@ function dislikeCard(card, likeId) {
             renderError(`Ошибка: ${err}`);
         })
 }
-//loading new avatar on server
+
 function loadingAvatar(data) {
     api.loadingNewAvatarOnServer({ avatar: data.avatar })
         .then((result) => {
@@ -196,7 +196,7 @@ function loadingAvatar(data) {
             renderLoading(false, popupAvatarRedact);
         });
 }
-//loading new cards on server 
+
 function loadingNewCard(data) {
     api.loadingNewCardOnServer({ name: data.title, link: data.link })
         .then((result) => {
@@ -210,7 +210,7 @@ function loadingNewCard(data) {
             renderLoading(false, popupAddNewCard);
         });
 }
-//loading info about user on server
+
 function loadingUserInfo(data) {
     api.loadingUserInfoOnServer({ name: data.name, about: data.about })
         .then((result) => {
@@ -224,7 +224,7 @@ function loadingUserInfo(data) {
             renderLoading(false, popupProfileRedact);
         });
 }
-//good UX
+
 function renderLoading(isLoading, popup) {
     if (isLoading) {
         popup.querySelector(selectorsAll.formloading).classList.add('form__loading_visible');

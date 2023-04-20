@@ -1,6 +1,6 @@
 import { Popup } from "./Popup.js";
 
-export class PopupWithDeletionButton extends Popup {
+export class PopupWithConfirmation extends Popup {
   constructor(popupSelector, deleteCardFromServer) {
     super(popupSelector);
     this._deleteCardFromServer = deleteCardFromServer;

@@ -10,7 +10,7 @@ export class Api {
     }
     return res.json();
   }
-  //initial users
+  
   initialUsers() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
@@ -18,7 +18,7 @@ export class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  //initial card from server
+ 
   initCardsFromServer() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
@@ -26,7 +26,7 @@ export class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  //loading info about user on server
+ 
   loadingUserInfoOnServer({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
@@ -40,7 +40,7 @@ export class Api {
       }),
     }).then((res) => this._getResponseData(res));
   }
-  //loading new cards on server
+ 
   loadingNewCardOnServer({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
@@ -54,7 +54,7 @@ export class Api {
       }),
     }).then((res) => this._getResponseData(res));
   }
-  //delete cards from server
+  
   deleteCardFromServer(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
@@ -63,7 +63,7 @@ export class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  //like cards
+  
   likeCards(likeId) {
     return fetch(`${this._baseUrl}/cards/likes/${likeId}`, {
       method: "PUT",
@@ -72,7 +72,7 @@ export class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  //dislike cards
+  
   dislikeCards(likeId) {
     return fetch(`${this._baseUrl}/cards/likes/${likeId}`, {
       method: "DELETE",
@@ -81,7 +81,7 @@ export class Api {
       },
     }).then((res) => this._getResponseData(res));
   }
-  //loading new avatar on server
+  
   loadingNewAvatarOnServer({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
