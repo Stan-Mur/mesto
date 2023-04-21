@@ -40,30 +40,27 @@ export class Card {
     return likes?.some((user) => user._id === this._myId);
   }
   _numLikesElement() {
-    this._numLikes = this._element.querySelector(".element-like__number");
     return this._numLikes;
   }
   showLikes(likes) {
     this._likes = likes;
-    this._numLikes = this._likes.length; 
+    this._numberLikes = this._likes.length; 
+    this._numLikesElement().textContent = this._numberLikes;
     if (this._checkLikes(likes)) {
       this._likeCard.classList.add("element-like__like_active");
-     // this._numLikesElement().textContent =
-       // Number(this._numLikesElement().textContent) + Number.length;
     } else {
       this._likeCard.classList.remove("element-like__like_active");
-      //this._numLikesElement().textContent =
-       // Number(this._numLikesElement().textContent) - Number.length;
     }
   }
 
   deleteСard() {
     this._element.remove();
+    this._element = null;
   }
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
+    this._numLikes = this._element.querySelector(".element-like__number");
     this._likeCard = this._element.querySelector(".element-like__like");
     this._likes.forEach((likes) => {
       if (likes._id === this._myId) {
@@ -86,9 +83,7 @@ export class Card {
     }
   }
   _setEventListeners() {
-    this._element
-      .querySelector(".element-like__like")
-      .addEventListener("click", () => {
+    this._element.querySelector(".element-like__like").addEventListener("click", () => {
         this._setLikeCardListener();
       });
 
