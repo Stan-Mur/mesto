@@ -118,8 +118,8 @@ popupAddCard.setEventListeners();
 popupImage.setEventListeners();
 
 
-function handleCardClick(elementImage) {
-    popupImage.openPopup(elementImage);
+function handleCardClick(name, link) {
+    popupImage.openPopup(name, link);
 }
 
 

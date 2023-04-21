@@ -6,14 +6,10 @@ export class PopupWithImage extends Popup {
     this._imagePopupCard = this._popup.querySelector(".form-image__image");
     this._titlePopupCard = this._popup.querySelector(".form-image__text");
   }
-  openPopup(cardElement) {
-   
-    const cardImage = cardElement.querySelector(".element__image");
-    const cardTitle = cardElement.querySelector(".element__text");
-
-    this._imagePopupCard.src = cardImage.src;
-    this._imagePopupCard.textContent = cardTitle.alt;
-    this._titlePopupCard.textContent = cardTitle.textContent;
+  openPopup(name, link) {
+    this._imagePopupCard.src = link;
+    this._imagePopupCard.textContent = name;
+    this._titlePopupCard.textContent = name;
     super.openPopup();
   }
 }

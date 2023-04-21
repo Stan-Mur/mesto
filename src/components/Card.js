@@ -44,16 +44,16 @@ export class Card {
     return this._numLikes;
   }
   showLikes(likes) {
+    this._likes = likes;
+    this._numLikes = this._likes.length; 
     if (this._checkLikes(likes)) {
-      this._likCard.classList.add("element-like__like_active");
-      this._likes = likes;
-      this._numLikesElement().textContent =
-        Number(this._numLikesElement().textContent) + Number(1);
+      this._likeCard.classList.add("element-like__like_active");
+     // this._numLikesElement().textContent =
+       // Number(this._numLikesElement().textContent) + Number.length;
     } else {
-      this._likCard.classList.remove("element-like__like_active");
-      this._likes = likes;
-      this._numLikesElement().textContent =
-        Number(this._numLikesElement().textContent) - Number(1);
+      this._likeCard.classList.remove("element-like__like_active");
+      //this._numLikesElement().textContent =
+       // Number(this._numLikesElement().textContent) - Number.length;
     }
   }
 
@@ -64,10 +64,10 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._likCard = this._element.querySelector(".element-like__like");
+    this._likeCard = this._element.querySelector(".element-like__like");
     this._likes.forEach((likes) => {
       if (likes._id === this._myId) {
-        this._likCard.classList.add("element-like__like_active");
+        this._likeCard.classList.add("element-like__like_active");
       }
     });
 
@@ -97,10 +97,10 @@ export class Card {
       .addEventListener("click", () => {
         this._buttonDeleteCard(this, this._id);
       });
-    this._element
+      this._element
       .querySelector(".element__image")
       .addEventListener("click", () => {
-        this._handleCardClick(this._element);
+        this._handleCardClick(this._name, this._link);
       });
   }
 }
