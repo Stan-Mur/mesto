@@ -62,15 +62,13 @@ export class Card {
     this._setEventListeners();
     this._numLikes = this._element.querySelector(".element-like__number");
     this._likeCard = this._element.querySelector(".element-like__like");
-    this._likes.forEach((likes) => {
-      if (likes._id === this._myId) {
-        this._likeCard.classList.add("element-like__like_active");
-      }
-    });
+    this.showLikes(this._likes);
+   this._cardImage = this._element.querySelector(".element__image");
 
-    this._element.querySelector(".element__image").src = this._link;
+    this._cardImage.src = this._link;
     this._element.querySelector(".element__text").textContent = this._name;
-    this._element.querySelector(".element__image").alt = this._name;
+    this._cardImage.alt = this._name;
+    //this._element.querySelector(".element__image").alt = this._name;
     this._element.querySelector(".element-like__number").textContent =
       this._number;
 
